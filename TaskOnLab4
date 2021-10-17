@@ -1,0 +1,192 @@
+package lab4;
+
+public class Lab4 {
+
+    public static void main(String[] args) {
+        Pracownik prac1 = new Pracownik("Jan", "Kowalski", 5000);
+        System.out.println("Imie: " + prac1.imie);
+        System.out.println("Nazwisko: " + prac1.nazwisko);
+        System.out.println("Wyplata: " + prac1.wyplata);
+        
+        Szef s1 = new Szef();
+        
+        s1.imie = "Janina";
+        s1.nazwisko = "Kowalska";
+        s1.wyplata = 10000;
+        s1.premia = 3000;
+        
+        System.out.println("Imie: " + s1.imie);
+        System.out.println("Nazwisko: " + s1.nazwisko);
+        System.out.println("Pensja: " + s1.wyplata);
+        System.out.println("Premia: " + s1.premia);
+        System.out.println(prac1.toString());
+        
+        Punkt pkt1 = new Punkt(2, 5);
+        Prostokat p1 = new Prostokat(4, 5);
+        Figura f1 = new Figura();
+        Trojkat t1 = new Trojkat(4, 7);
+        
+        p1.przesun(3, 5);
+        System.out.println(p1.punkt.x);
+        System.out.println(p1.punkt.y);
+       
+        Kwadrat k1 = new Kwadrat(4, 4);
+        System.out.println(k1.wys);
+        System.out.println(k1.szer);
+        
+        System.out.println(pkt1.toString());
+        System.out.println(p1.toString());
+        System.out.println(t1.toString());
+        System.out.println(f1.toString());
+        System.out.println(k1.toString());
+
+    }
+}
+class Punkt
+{
+	//pola
+    int x = 0;
+    int y = 0;
+    // konstruktory
+    public Punkt ()
+    {
+    	x=0; 
+    	y=0;
+    }
+
+    public  Punkt(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+
+    public int getX(){
+    	return x;
+    }
+    
+   public  int getY(){
+    	return y;
+    }
+    
+    public  void setX(int x){
+		this.x = x;    	
+    }
+    
+    public  void setY(int y){
+		this.y = y;    	    	
+    }
+    
+    public void zeruj(){
+    	x=0;
+    	y=0;
+    }
+
+    @Override
+    public String toString() {
+        return "Punkt{" + "x=" + x + ", y=" + y + '}';
+    }
+}
+package lab4;
+class Prostokat extends Figura {
+	int wys=0;
+	int szer=0;
+
+        Prostokat(int wys,int szer){
+		
+		this.wys = wys;
+		this.szer = szer;	
+	}
+    
+    public Prostokat(int wys, int szer, String kolor) {
+        super(kolor);
+        this.wys = wys;
+        this.szer = szer;
+    }
+
+    int getPowierzchnia() {
+        return (szer * wys);
+    }
+    
+    public void przesun(int x, int y){
+        this.punkt.x += x;
+        this.punkt.y += y;
+    }
+
+    @Override
+    public String toString() {
+        return "Prostokat{" + "wys=" + wys + ", szer=" + szer + '}';
+    }
+    
+    
+}
+package lab4;
+
+class Figura {
+	
+	//pola metody i kontruktory
+	Punkt punkt;
+	String kolor = "bialy";
+	
+	
+	public Figura(){
+		punkt = new Punkt(0,0);
+	}
+	public Figura(String kolor){
+		this.kolor=kolor;
+		punkt= new Punkt(0,0);
+	}
+	public Figura(Punkt punkt){
+		this.punkt=punkt;
+	}
+	public String getKolor(){
+		return kolor;
+	}
+
+    @Override
+    public String toString() {
+        return "Figura{" + "punkt=" + punkt + ", kolor=" + kolor + '}';
+    }
+
+    
+}
+package lab4;
+
+class Trojkat extends Figura
+{
+	int wys=0;
+	int podst=0;
+
+	public Trojkat(int wys,int podst)
+	{
+	
+		this.wys = wys;
+		this.podst = podst;
+		
+	}
+
+    public Trojkat(int wys,int podst, String kolor) {
+        super(kolor);
+        this.wys = wys;
+	this.podst = podst;
+    }
+
+    @Override
+    public String toString() {
+        return "Trojkat{" + "wys=" + wys + ", podst=" + podst + '}';
+    }
+    
+    
+}
+package lab4;
+
+public class Kwadrat extends Prostokat {
+    
+    public Kwadrat(int wys, int szer) {
+        super(wys, szer);
+    }
+
+    public Kwadrat(int wys, int szer, String kolor) {
+        super(wys, szer, kolor);
+    }
+    
+}
