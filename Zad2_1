@@ -1,0 +1,19 @@
+package com.company;
+import java.util.Random;
+public class Auto {
+    float[] przebieg = new float[12];
+
+    public Auto() {
+        Random rand = new Random();
+        for (int i = 0; i < przebieg.length; i++) {
+            przebieg[i] = rand.nextFloat(20000);
+        }
+    }
+    public float srPrzebieg(float[] przebieg){
+        float suma = 0;
+        for (int i = 0; i < przebieg.length; i++){
+            suma = suma + przebieg[i];
+        }
+        return suma / 12f;
+    }
+}
