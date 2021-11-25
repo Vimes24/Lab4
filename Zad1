@@ -1,0 +1,52 @@
+public class Okrag extends Figura {
+    int promien;
+    Punkt Srodek;
+    Okrag(int promien, Punkt Srodek)
+    {
+        this.promien = promien;
+        this.Srodek = Srodek;
+    }
+    Okrag()
+    {
+
+    }
+
+    public double getPowierzchnia()
+    {
+        return Math.PI * Math.pow(this.promien,2);
+    }
+
+    public void setSrednica(int promien) {
+        this.promien = 2 * promien;
+    }
+
+    public int getPromien() {
+        return promien;
+    }
+
+    public void wSrodku(Punkt pkt)
+    {
+        if ((Math.pow(pkt.x - Srodek.x, 2)) + (Math.pow(pkt.y - Srodek.y, 2)) < Math.pow(promien, 2))
+        {
+            System.out.println("Podany punkt jest wewnątrz okręgu");
+        }
+        else
+        {
+            System.out.println("Punkt jest na obwodzie lub poza okręgiem");
+        }
+    }
+    public static void CircleOnRectangle (Prostokat rect)
+    {
+        int radiant = (int)(Math.sqrt((Math.pow(rect.wys,2)) + (Math.pow(rect.szer, 2)))) / 2;
+        System.out.println("Punkt Okręgu opisanego na prostokącie ma współrzędne: [" + rect.punkt.x + ", " + rect.punkt.y + "]");
+        System.out.println("A promień wynosi: " + radiant);
+    }
+
+    @Override
+    public String toString() {
+        return "Okrag{" +
+                "promien=" + promien +
+                ", Srodek=" + Srodek +
+                '}';
+    }
+}
